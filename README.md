@@ -1,0 +1,2 @@
+# Labirynths
+Simple labirynth app

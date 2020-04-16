@@ -2,7 +2,6 @@ package pl.agh.edu.dp.labirynth;
 
 import pl.agh.edu.dp.gui.ElementImage;
 
-import javax.swing.text.Element;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -10,11 +9,13 @@ public class Room extends MapSite
 {
     private int roomNumber;
     private Map<Direction, MapSite> sides;
+    private Maze maze;
 
 
-    public Room(int number){
+    public Room(int number, Maze maze){
         this.sides = new EnumMap<>(Direction.class);
         this.roomNumber = number;
+        this.maze = maze;
     }
 
     public MapSite getSide(Direction direction){
@@ -42,7 +43,8 @@ public class Room extends MapSite
 
     @Override
     public void enter(){
-
+        System.out.println("Entering new room");
+        this.maze.currentRoom = this;
     }
 
     @Override

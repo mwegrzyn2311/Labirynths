@@ -9,7 +9,7 @@ public class Wall extends MapSite {
 
     @Override
     public void enter(){
-
+        System.out.println("Cannot enter wall");
     }
 
     @Override

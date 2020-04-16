@@ -27,6 +27,7 @@ public class LevelPanel extends JPanel {
     private BufferedImage image = null;
     private Timer timer;
     private MoveBindings bindings;
+    private int delay = 300;
 
 
     public LevelPanel(BufferedImage image) {
@@ -44,7 +45,7 @@ public class LevelPanel extends JPanel {
         this.setPreferredSize(new Dimension(ElementTile.tileSize*width, ElementTile.tileSize*height));
 
         initTiles();
-        this.timer = new Timer(180, actionEvent -> {
+        this.timer = new Timer(delay, actionEvent -> {
             try {
                 executeOneTurn();
             } catch (IOException e) {

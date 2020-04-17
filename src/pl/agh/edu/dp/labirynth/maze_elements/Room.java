@@ -29,7 +29,7 @@ public class Room extends MapSite
         if(i == 0 && j == 0) {
             return ElementImage.PLAYER;
         } else if(i != 0 && j != 0) {
-            return ElementImage.SOLID_WALL;
+            return ElementImage.WALL;
         } else {
             return this.sides.get(Direction.vectorToDirection(i, j)).getImage();
         }

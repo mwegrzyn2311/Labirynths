@@ -1,23 +1,18 @@
 package pl.agh.edu.dp.gui;
 
 import pl.agh.edu.dp.labirynth.*;
-import pl.agh.edu.dp.labirynth.builder.StandardBuilderMaze;
-import pl.agh.edu.dp.labirynth.factory.BombedMazeFactory;
-import pl.agh.edu.dp.labirynth.factory.EnchantedMazeFactory;
-import pl.agh.edu.dp.labirynth.factory.MazeFactory;
+import pl.agh.edu.dp.labirynth.builder.MazeBuilder;
 import pl.agh.edu.dp.labirynth.utils.Direction;
 import pl.agh.edu.dp.utils.Vector2d;
 
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class LevelPanel extends JPanel {
-    private Maze maze;
     private Player player;
     private Map<Vector2d, ElementTile> tilesMap = new HashMap<>();
 
@@ -25,16 +20,20 @@ public class LevelPanel extends JPanel {
     private int height;
     public Direction lastMove = null;
     public Direction oneMove = null;
-    private BufferedImage image = null;
     private Timer timer;
-    private MoveBindings bindings;
     private int delay = 300;
+    private Game game;
 
 
-    public LevelPanel(BufferedImage image) {
-        this.maze = MazeGame.createMaze(new StandardBuilderMaze(BombedMazeFactory.getInstance()));
-        this.player = new Player(this.maze.getStartingRoom());
+    public LevelPanel(Game game, MazeBuilder builder) {
+        Maze maze = MazeGame.createMaze(builder);
+        this.player = new Player(maze.getStartingRoom());
         constructPanel();
+        this.game = game;
+        this.timer.start();
+    }
+
+    public void startTimer() {
         this.timer.start();
     }
 
@@ -60,7 +59,7 @@ public class LevelPanel extends JPanel {
     private void executeOneTurn() throws IOException {
         player.update(delay);
         if(player.isDead()) {
-            System.out.println("Co ty sobie myślisz, cwaniaczku, że z piątego przykazania możesz sobie zrobić spółkę z ograniczoną odpowiedzialnością?!");
+            gameOver();
             return;
         }
         if(lastMove != null) {
@@ -73,7 +72,18 @@ public class LevelPanel extends JPanel {
         oneMove = null;
     }
 
-    public void initTiles(){
+    private void gameOver() {
+        game.getContentPane().removeAll();
+        GameOverScreen gameOverScreen = new GameOverScreen(game);
+        game.add(gameOverScreen);
+        game.pack();
+        game.setLocationRelativeTo(null);
+        game.setVisible(true);
+        gameOverScreen.requestFocusInWindow();
+        timer.stop();
+    }
+
+    private void initTiles(){
         this.removeAll();
         ElementTile tile;
         ElementImage eleImage;
@@ -100,7 +110,6 @@ public class LevelPanel extends JPanel {
 
     private void setKeyBindings(){
         this.setFocusable(true);
-        this.bindings = new MoveBindings(this);
-        this.addKeyListener(this.bindings);
+        this.addKeyListener(new MoveBindings(this));
     }
 }

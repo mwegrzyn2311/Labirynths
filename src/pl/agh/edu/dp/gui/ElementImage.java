@@ -8,7 +8,6 @@ import java.io.IOException;
 public enum ElementImage {
     PLAYER("player.png"),
     WALL("wall.png"),
-    SOLID_WALL("solidWall.png"),
     DOOR("door.png");
 
     public Image image;

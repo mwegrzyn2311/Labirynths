@@ -7,6 +7,7 @@ import java.util.Vector;
 
 public class Maze {
     private Vector<Room> rooms = new Vector<>();
+    private Optional<Integer> startingRoomIndex;
 
     public Maze() { }
 
@@ -28,10 +29,23 @@ public class Maze {
         return rooms.size();
     }
 
+    public void setStartingRoom(int index) {
+        startingRoomIndex = Optional.of(index);
+    }
+
     public Room getStartingRoom() {
         if(rooms.isEmpty()) {
             throw new RuntimeException("Maze has no rooms");
         }
-        return rooms.firstElement();
+        if(startingRoomIndex.isEmpty()) {
+            return rooms.firstElement();
+        } else {
+            for(Room room : rooms) {
+                if(startingRoomIndex.get() == room.getRoomNumber()) {
+                    return room;
+                }
+            }
+        }
+        throw new RuntimeException("There is no room with index == starting index");
     }
 }

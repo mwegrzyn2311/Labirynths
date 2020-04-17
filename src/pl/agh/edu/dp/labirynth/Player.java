@@ -9,6 +9,7 @@ public class Player {
 
     public Player(Room currentRoom) {
         this.currentRoom = currentRoom;
+        this.currentRoom.enter(this);
     }
 
     public void move(Direction dir) {

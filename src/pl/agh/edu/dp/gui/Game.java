@@ -1,23 +1,33 @@
 package pl.agh.edu.dp.gui;
 
+import pl.agh.edu.dp.labirynth.builder.MazeBuilder;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class Game extends JFrame {
-    public Game() throws IOException {
+    MazeBuilder builder;
+
+    public Game(MazeBuilder builder) {
         super("Labirynth");
+        this.builder = builder;
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 
-        this.add(new LevelPanel(null));
-
-        this.setResizable(false);
-        this.pack();
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
+        startLevel();
     }
 
+    public void startLevel() {
+            this.getContentPane().removeAll();
+
+            LevelPanel panel = new LevelPanel(this, builder);
+            this.add(panel);
+            panel.requestFocusInWindow();
+
+            this.setResizable(false);
+            this.pack();
+            this.setLocationRelativeTo(null);
+            this.setVisible(true);
+    }
 }

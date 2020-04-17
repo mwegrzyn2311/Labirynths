@@ -2,6 +2,8 @@ package pl.agh.edu.dp.gui;
 
 import pl.agh.edu.dp.labirynth.*;
 import pl.agh.edu.dp.labirynth.builder.StandardBuilderMaze;
+import pl.agh.edu.dp.labirynth.factory.EnchantedMazeFactory;
+import pl.agh.edu.dp.labirynth.factory.MazeFactory;
 import pl.agh.edu.dp.labirynth.utils.Direction;
 import pl.agh.edu.dp.utils.Vector2d;
 
@@ -28,7 +30,7 @@ public class LevelPanel extends JPanel {
 
 
     public LevelPanel(BufferedImage image) {
-        this.maze = MazeGame.createMaze(new StandardBuilderMaze());
+        this.maze = MazeGame.createMaze(new StandardBuilderMaze(MazeFactory.getInstance()));
         constructPanel();
         this.timer.start();
     }
@@ -58,7 +60,6 @@ public class LevelPanel extends JPanel {
         } else if(oneMove != null) {
             maze.currentRoom.getSide(oneMove).enter();
         }
-
         updateTiles();
         oneMove = null;
     }

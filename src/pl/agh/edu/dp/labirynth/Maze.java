@@ -8,8 +8,6 @@ import java.util.Vector;
 public class Maze {
     private Vector<Room> rooms = new Vector<>();
     public Room currentRoom = null;
-    public int width;
-    public int height;
 
     public Maze() { }
 

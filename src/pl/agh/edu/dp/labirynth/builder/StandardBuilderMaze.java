@@ -11,6 +11,10 @@ public class StandardBuilderMaze extends MazeBuilder {
     private Maze maze = new Maze();
     private MazeFactory factory;
 
+    public StandardBuilderMaze(MazeFactory factory) {
+        this.factory = factory;
+    }
+
     @Override
     public void buildRoom(int index) {
         if(!maze.getRoom(index).isEmpty()) {
@@ -35,7 +39,7 @@ public class StandardBuilderMaze extends MazeBuilder {
         Direction dir = commonWall(room1, room2);
         Door door = factory.makeDoor(room1, room2);
         room1.setSide(dir, door);
-        room2.setSide(dir, door);
+        room2.setSide(dir.opposite(), door);
     }
 
     @Override
@@ -50,7 +54,7 @@ public class StandardBuilderMaze extends MazeBuilder {
         }
         Door door = factory.makeDoor(room1, room2);
         room1.setSide(dir, door);
-        room2.setSide(dir, door);
+        room2.setSide(dir.opposite(), door);
     }
 
     private boolean canConnectRoomsInDir(Room room1, Room room2, Direction dir) {

@@ -11,7 +11,7 @@ public class Room extends MapSite
 {
     private int roomNumber;
     private Map<Direction, MapSite> sides;
-    private Maze maze;
+    public Maze maze;
 
 
     public Room(int number, Maze maze){
@@ -26,7 +26,6 @@ public class Room extends MapSite
 
     public ElementImage getSideImage(int i, int j) {
         if(i == 0 && j == 0) {
-            //TODO: change Player to singleton
             return ElementImage.PLAYER;
         } else if(i != 0 && j != 0) {
             return ElementImage.SOLID_WALL;

@@ -17,6 +17,11 @@ public class Door extends MapSite {
 
     @Override
     public void enter(){
+        if(room1.maze.currentRoom == room1) {
+            room2.enter();
+        } else {
+            room1.enter();
+        }
         System.out.println("Entering door");
     }
 

@@ -24,4 +24,12 @@ public class MazeGame {
 
         return maze;
     }
+
+    public static Maze createMaze(MazeBuilder builder){
+        builder.buildRoom(1);
+        builder.buildRoom(2);
+        builder.buildDoor(1, 2);
+
+        return builder.getMaze();
+    }
 }

@@ -1,5 +1,7 @@
 package pl.agh.edu.dp.labirynth;
 
+import pl.agh.edu.dp.labirynth.builder.MazeBuilder;
+
 public class MazeGame {
     public static Maze createMaze(){
         Maze maze = new Maze();
@@ -26,6 +28,7 @@ public class MazeGame {
     }
 
     public static Maze createMaze(MazeBuilder builder){
+        builder.clear();
         builder.buildRoom(1);
         builder.buildRoom(2);
         builder.buildDoor(1, 2);

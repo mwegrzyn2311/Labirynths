@@ -1,6 +1,7 @@
 package pl.agh.edu.dp.gui;
 
 import pl.agh.edu.dp.labirynth.*;
+import pl.agh.edu.dp.labirynth.builder.StandardBuilderMaze;
 import pl.agh.edu.dp.utils.Vector2d;
 
 
@@ -31,7 +32,7 @@ public class LevelPanel extends JPanel {
 
 
     public LevelPanel(BufferedImage image) {
-        this.maze = MazeGame.createMaze();
+        this.maze = MazeGame.createMaze(new StandardBuilderMaze());
         constructPanel();
         this.timer.start();
     }

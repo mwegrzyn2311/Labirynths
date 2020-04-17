@@ -1,5 +1,6 @@
 package pl.agh.edu.dp.labirynth;
 
+import java.util.Optional;
 import java.util.Vector;
 
 public class Maze {
@@ -17,6 +18,11 @@ public class Maze {
 
     public void setRooms(Vector<Room> rooms) {
         this.rooms = rooms;
+    }
+    public Optional<Room> getRoom(int index) {
+        return rooms.stream()
+                .filter(room -> room.getRoomNumber() == index)
+                .findAny();
     }
 
     public int getRoomNumbers()

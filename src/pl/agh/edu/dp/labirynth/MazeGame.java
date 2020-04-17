@@ -14,15 +14,15 @@ public class MazeGame {
         maze.addRoom(r1);
         maze.addRoom(r2);
 
-        r1.setSide(Direction.North, r2);
-        r1.setSide(Direction.East, new Wall());
-        r1.setSide(Direction.South, new Wall());
-        r1.setSide(Direction.West, new Wall());
+        r1.setSide(Direction.NORTH, r2);
+        r1.setSide(Direction.EAST, new Wall());
+        r1.setSide(Direction.SOUTH, new Wall());
+        r1.setSide(Direction.WEST, new Wall());
 
-        r2.setSide(Direction.North, new Wall());
-        r2.setSide(Direction.East, new Wall());
-        r2.setSide(Direction.South, new Door(r2, r1));
-        r2.setSide(Direction.West, new Wall());
+        r2.setSide(Direction.NORTH, new Wall());
+        r2.setSide(Direction.EAST, new Wall());
+        r2.setSide(Direction.SOUTH, new Door(r2, r1));
+        r2.setSide(Direction.WEST, new Wall());
 
         return maze;
     }

@@ -1,19 +1,33 @@
 package pl.agh.edu.dp.labirynth;
 
 public enum Direction {
-    North, South, East, West;
+    NORTH, SOUTH, EAST, WEST;
 
     public static Direction vectorToDirection(int i, int j) {
         if(i == 1 && j == 0) {
-            return East;
+            return EAST;
         } else if(i == 0 && j == -1) {
-            return South;
+            return SOUTH;
         } else if(i == -1 && j == 0) {
-            return West;
+            return WEST;
         } else if(i == 0 && j == 1) {
-            return North;
+            return NORTH;
         } else {
             throw new IllegalArgumentException("Cannot convert given (i="+i+", j="+j+") to Direction!");
         }
+    }
+
+    public Direction opposite() {
+        switch(this) {
+            case NORTH:
+                return SOUTH;
+            case SOUTH:
+                return NORTH;
+            case EAST:
+                return WEST;
+            case WEST:
+                return EAST;
+        }
+        return null;
     }
 }

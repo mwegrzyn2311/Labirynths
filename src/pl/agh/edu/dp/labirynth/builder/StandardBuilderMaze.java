@@ -1,49 +1,71 @@
 package pl.agh.edu.dp.labirynth.builder;
 
-import pl.agh.edu.dp.labirynth.Direction;
-import pl.agh.edu.dp.labirynth.Door;
-import pl.agh.edu.dp.labirynth.Room;
-import pl.agh.edu.dp.labirynth.Wall;
+import pl.agh.edu.dp.labirynth.*;
 
 public class StandardBuilderMaze extends MazeBuilder {
+    private Maze maze = new Maze();
+    private MazeFactory factory;
+
     @Override
     public void buildRoom(int index) {
         if(!maze.getRoom(index).isEmpty()) {
             throw new IllegalArgumentException("Trying to build room on occupied place");
         }
         Room room = new Room(index, maze);
-        room.setSide(Direction.East, new Wall());
-        room.setSide(Direction.West, new Wall());
-        room.setSide(Direction.North, new Wall());
-        room.setSide(Direction.South, new Wall());
+        room.setSide(Direction.EAST, new Wall());
+        room.setSide(Direction.WEST, new Wall());
+        room.setSide(Direction.NORTH, new Wall());
+        room.setSide(Direction.SOUTH, new Wall());
 
         maze.addRoom(room);
     }
 
     @Override
-    public void buildDoor(int from, int to) {
-        Room roomFrom = maze.getRoom(from).orElseThrow(IllegalArgumentException::new);
-        Room roomTo = maze.getRoom(to).orElseThrow(IllegalArgumentException::new);
+    public void buildDoor(int roomIndex1, int roomIndex2) {
+        if(maze.getRoom(roomIndex1).isEmpty() || maze.getRoom(roomIndex2).isEmpty()) {
+            throw new IllegalArgumentException("Cannot connect non-existing rooms");
+        }
+        Room room1 = maze.getRoom(roomIndex1).get();
+        Room room2 = maze.getRoom(roomIndex2).get();
+        Direction dir = commonWall(room1, room2);
+        Door door = factory.makeDoor(room1, room2);
+        room1.setSide(dir, door);
+        room2.setSide(dir, door);
+    }
 
-        Door door= new Door(roomFrom, roomTo);
-        roomFrom.setSide(commonWall(roomFrom, roomTo), door);
-        roomTo.setSide(commonWall(roomTo, roomFrom), door);
+    @Override
+    public void buildDoor(int roomIndex1, int roomIndex2, Direction dir) {
+        if(maze.getRoom(roomIndex1).isEmpty() || maze.getRoom(roomIndex2).isEmpty()) {
+            throw new IllegalArgumentException("Cannot connect non-existing rooms");
+        }
+        Room room1 = maze.getRoom(roomIndex1).get();
+        Room room2 = maze.getRoom(roomIndex2).get();
+        if(!canConnectRoomsInDir(room1, room2, dir)) {
+            throw new IllegalArgumentException("Cannot connect given rooms in given direction");
+        }
+        Door door = factory.makeDoor(room1, room2);
+        room1.setSide(dir, door);
+        room2.setSide(dir, door);
+    }
+
+    private boolean canConnectRoomsInDir(Room room1, Room room2, Direction dir) {
+        return (room1.getSide(dir) instanceof Wall && room2.getSide(dir.opposite()) instanceof Wall);
     }
 
     private Direction commonWall(Room from, Room to)
     {
-        int fromIndex = from.getRoomNumber();
-        int toIndex = to.getRoomNumber();
+        for(Direction dir : Direction.values()) {
+            if(from.getSide(dir) instanceof Wall && to.getSide(dir.opposite()) instanceof Wall) {
+                return dir;
+            }
+        }
+        throw new IllegalArgumentException("Cannot connect theese rooms");
+    }
 
-        if(fromIndex + 1 == toIndex) {
-            return Direction.East;
-        }
-        if(fromIndex - 1 == toIndex) {
-            return Direction.West;
-        }
-        if(fromIndex > toIndex) {
-            return Direction.South;
-        }
-        return Direction.North;
+    public Maze getMaze() {
+        return maze;
+    }
+    public void clear() {
+        maze = new Maze();
     }
 }

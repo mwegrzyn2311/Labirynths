@@ -25,23 +25,23 @@ public class MoveBindings implements KeyListener {
             // Firstly moving player
             case(KeyEvent.VK_UP):
                 upPressed = true;
-                this.levelPanel.lastMove = Direction.North;
-                this.levelPanel.oneMove = Direction.North;
+                this.levelPanel.lastMove = Direction.NORTH;
+                this.levelPanel.oneMove = Direction.NORTH;
                 break;
             case(KeyEvent.VK_RIGHT):
                 rightPressed = true;
-                this.levelPanel.lastMove = Direction.East;
-                this.levelPanel.oneMove = Direction.East;
+                this.levelPanel.lastMove = Direction.EAST;
+                this.levelPanel.oneMove = Direction.EAST;
                 break;
             case(KeyEvent.VK_DOWN):
                 downPressed = true;
-                this.levelPanel.lastMove = Direction.South;
-                this.levelPanel.oneMove = Direction.South;
+                this.levelPanel.lastMove = Direction.SOUTH;
+                this.levelPanel.oneMove = Direction.SOUTH;
                 break;
             case(KeyEvent.VK_LEFT):
                 leftPressed = true;
-                this.levelPanel.lastMove = Direction.West;
-                this.levelPanel.oneMove = Direction.West;
+                this.levelPanel.lastMove = Direction.WEST;
+                this.levelPanel.oneMove = Direction.WEST;
                 break;
 
             default:

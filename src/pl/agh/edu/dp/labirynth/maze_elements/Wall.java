@@ -1,6 +1,7 @@
 package pl.agh.edu.dp.labirynth.maze_elements;
 
 import pl.agh.edu.dp.gui.ElementImage;
+import pl.agh.edu.dp.labirynth.Player;
 
 public class Wall extends MapSite {
     public Wall(){
@@ -8,7 +9,7 @@ public class Wall extends MapSite {
     }
 
     @Override
-    public void enter(){
+    public void enter(Player player){
         System.out.println("Cannot enter wall");
     }
 

@@ -1,6 +1,7 @@
 package pl.agh.edu.dp.labirynth.maze_elements;
 
 import pl.agh.edu.dp.gui.ElementImage;
+import pl.agh.edu.dp.labirynth.Player;
 import pl.agh.edu.dp.labirynth.utils.Direction;
 import pl.agh.edu.dp.labirynth.Maze;
 
@@ -43,13 +44,17 @@ public class Room extends MapSite
     }
 
     @Override
-    public void enter(){
+    public void enter(Player player){
         System.out.println("Entering new room");
-        this.maze.currentRoom = this;
+        player.currentRoom = this;
     }
 
     @Override
     public ElementImage getImage() {
         return ElementImage.FLOOR;
+    }
+
+    public void update(int deltaTime, Player player) {
+
     }
 }

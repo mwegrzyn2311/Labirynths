@@ -9,6 +9,17 @@ import pl.agh.edu.dp.labirynth.maze_elements.enchanted.EnchantedRoom;
 import pl.agh.edu.dp.labirynth.maze_elements.enchanted.EnchantedWall;
 
 public class EnchantedMazeFactory extends MazeFactory {
+    private static EnchantedMazeFactory instance;
+
+    protected EnchantedMazeFactory() {};
+
+    public static EnchantedMazeFactory getInstance() {
+        if(instance == null) {
+            instance = new EnchantedMazeFactory();
+        }
+        return instance;
+    }
+
     @Override
     public Room makeRoom(int index, Maze maze) {
         return new EnchantedRoom(index, maze);

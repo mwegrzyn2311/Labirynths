@@ -1,6 +1,7 @@
 package pl.agh.edu.dp.labirynth.maze_elements;
 
 import pl.agh.edu.dp.gui.ElementImage;
+import pl.agh.edu.dp.labirynth.Player;
 import pl.agh.edu.dp.labirynth.maze_elements.MapSite;
 import pl.agh.edu.dp.labirynth.maze_elements.Room;
 
@@ -16,11 +17,11 @@ public class Door extends MapSite {
 
 
     @Override
-    public void enter(){
-        if(room1.maze.currentRoom == room1) {
-            room2.enter();
+    public void enter(Player player){
+        if(player.currentRoom == room1) {
+            room2.enter(player);
         } else {
-            room1.enter();
+            room1.enter(player);
         }
         System.out.println("Entering door");
     }

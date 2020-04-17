@@ -6,11 +6,14 @@ import pl.agh.edu.dp.labirynth.maze_elements.Room;
 import pl.agh.edu.dp.labirynth.maze_elements.Wall;
 
 public class MazeFactory {
-    private static MazeFactory instance = new MazeFactory();
+    private static MazeFactory instance;
 
     protected MazeFactory() {};
 
     public static MazeFactory getInstance() {
+        if(instance == null) {
+            instance = new MazeFactory();
+        }
         return instance;
     }
 

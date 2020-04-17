@@ -7,15 +7,11 @@ import java.util.Vector;
 
 public class Maze {
     private Vector<Room> rooms = new Vector<>();
-    public Room currentRoom = null;
 
     public Maze() { }
 
     public void addRoom(Room room){
         rooms.add(room);
-        if(this.currentRoom == null) {
-            this.currentRoom = room;
-        }
     }
 
     public void setRooms(Vector<Room> rooms) {
@@ -30,5 +26,12 @@ public class Maze {
     public int getRoomNumbers()
     {
         return rooms.size();
+    }
+
+    public Room getStartingRoom() {
+        if(rooms.isEmpty()) {
+            throw new RuntimeException("Maze has no rooms");
+        }
+        return rooms.firstElement();
     }
 }

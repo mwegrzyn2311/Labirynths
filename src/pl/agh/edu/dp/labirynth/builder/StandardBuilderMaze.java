@@ -20,11 +20,10 @@ public class StandardBuilderMaze extends MazeBuilder {
         if(!maze.getRoom(index).isEmpty()) {
             throw new IllegalArgumentException("Trying to build room on occupied place");
         }
-        Room room = new Room(index, maze);
-        room.setSide(Direction.EAST, new Wall());
-        room.setSide(Direction.WEST, new Wall());
-        room.setSide(Direction.NORTH, new Wall());
-        room.setSide(Direction.SOUTH, new Wall());
+        Room room = factory.makeRoom(index, maze);
+        for (Direction dir: Direction.values()) {
+            room.setSide(dir, factory.makeWall());
+        }
 
         maze.addRoom(room);
     }

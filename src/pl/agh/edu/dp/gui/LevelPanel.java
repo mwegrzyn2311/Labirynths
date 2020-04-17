@@ -2,6 +2,7 @@ package pl.agh.edu.dp.gui;
 
 import pl.agh.edu.dp.labirynth.*;
 import pl.agh.edu.dp.labirynth.builder.StandardBuilderMaze;
+import pl.agh.edu.dp.labirynth.factory.BombedMazeFactory;
 import pl.agh.edu.dp.labirynth.factory.EnchantedMazeFactory;
 import pl.agh.edu.dp.labirynth.factory.MazeFactory;
 import pl.agh.edu.dp.labirynth.utils.Direction;
@@ -17,6 +18,7 @@ import java.util.Map;
 
 public class LevelPanel extends JPanel {
     private Maze maze;
+    private Player player;
     private Map<Vector2d, ElementTile> tilesMap = new HashMap<>();
 
     private int width;
@@ -30,7 +32,8 @@ public class LevelPanel extends JPanel {
 
 
     public LevelPanel(BufferedImage image) {
-        this.maze = MazeGame.createMaze(new StandardBuilderMaze(MazeFactory.getInstance()));
+        this.maze = MazeGame.createMaze(new StandardBuilderMaze(BombedMazeFactory.getInstance()));
+        this.player = new Player(this.maze.getStartingRoom());
         constructPanel();
         this.timer.start();
     }
@@ -55,11 +58,16 @@ public class LevelPanel extends JPanel {
     }
 
     private void executeOneTurn() throws IOException {
+        player.update(delay);
+        if(player.isDead()) {
+            System.out.println("Co ty sobie myślisz, cwaniaczku, że z piątego przykazania możesz sobie zrobić spółkę z ograniczoną odpowiedzialnością?!");
+            return;
+        }
         if(lastMove != null) {
-            maze.currentRoom.getSide(lastMove).enter();
+            player.move(lastMove);
             updateTiles();
         } else if(oneMove != null) {
-            maze.currentRoom.getSide(oneMove).enter();
+            player.move(oneMove);
             updateTiles();
         }
         oneMove = null;
@@ -72,7 +80,7 @@ public class LevelPanel extends JPanel {
 
         for(int j = 1; j >= -1; j--) {
             for(int i = -1; i <= 1; i++) {
-                eleImage = this.maze.currentRoom.getSideImage(i, j);
+                eleImage = this.player.currentRoom.getSideImage(i, j);
                 tile = new ElementTile(eleImage.image);
                 this.tilesMap.put(new Vector2d(i,j), tile);
                 this.add(tile);
@@ -84,7 +92,7 @@ public class LevelPanel extends JPanel {
         ElementImage eleImage;
         for(int j = 1; j >= -1; j--) {
             for(int i = -1; i <= 1; i++) {
-                eleImage = this.maze.currentRoom.getSideImage(i, j);
+                eleImage = this.player.currentRoom.getSideImage(i, j);
                 this.tilesMap.get(new Vector2d(i,j)).changeImage(eleImage.image);
             }
         }

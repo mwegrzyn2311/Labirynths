@@ -1,11 +1,12 @@
 package pl.agh.edu.dp.labirynth.maze_elements.bombed;
 
+import pl.agh.edu.dp.gui.LevelPanel;
 import pl.agh.edu.dp.labirynth.Maze;
 import pl.agh.edu.dp.labirynth.Player;
 import pl.agh.edu.dp.labirynth.maze_elements.Room;
 
 public class BombedRoom extends Room {
-    static final int timeToDetonate = 10*100;
+    static final int timeToDetonate = 10* 300;
     int timer = 0;
     public BombedRoom(int number, Maze maze) {
         super(number, maze);

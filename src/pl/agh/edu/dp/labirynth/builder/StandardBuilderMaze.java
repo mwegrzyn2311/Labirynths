@@ -24,7 +24,6 @@ public class StandardBuilderMaze extends MazeBuilder {
         for (Direction dir: Direction.values()) {
             room.setSide(dir, factory.makeWall());
         }
-
         maze.addRoom(room);
     }
 
@@ -73,6 +72,7 @@ public class StandardBuilderMaze extends MazeBuilder {
     public Maze getMaze() {
         return maze;
     }
+
     public void clear() {
         maze = new Maze();
     }

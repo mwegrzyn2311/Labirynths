@@ -2,6 +2,7 @@ package pl.agh.edu.dp.gui;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class ElementTile extends JComponent {
     private Image image;

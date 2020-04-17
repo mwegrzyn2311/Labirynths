@@ -8,7 +8,7 @@ import java.nio.file.Paths;
 
 public class Game extends JFrame {
     public Game() throws IOException {
-        super("Kamienie na ryj");
+        super("Labirynth");
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLayout(new BorderLayout());
 

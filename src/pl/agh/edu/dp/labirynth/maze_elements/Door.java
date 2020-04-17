@@ -8,7 +8,6 @@ import pl.agh.edu.dp.labirynth.maze_elements.Room;
 public class Door extends MapSite {
     private Room room1;
     private Room room2;
-    public boolean opened;
 
     public Door(Room r1, Room r2){
         this.room1 = r1;
@@ -23,7 +22,6 @@ public class Door extends MapSite {
         } else {
             room1.enter(player);
         }
-        System.out.println("Entering door");
     }
 
     @Override

@@ -44,14 +44,13 @@ public class Room extends MapSite
     }
 
     @Override
-    public void enter(Player player){
-        System.out.println("Entering new room");
+    public void enter(Player player) {
         player.currentRoom = this;
     }
 
     @Override
     public ElementImage getImage() {
-        return ElementImage.FLOOR;
+        throw new IllegalArgumentException("Currently you can only enter room by a door");
     }
 
     public void update(int deltaTime, Player player) {

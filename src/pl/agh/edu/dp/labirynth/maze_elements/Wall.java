@@ -9,9 +9,7 @@ public class Wall extends MapSite {
     }
 
     @Override
-    public void enter(Player player){
-        System.out.println("Cannot enter wall");
-    }
+    public void enter(Player player){ }
 
     @Override
     public ElementImage getImage() {

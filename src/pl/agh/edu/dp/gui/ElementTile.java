@@ -5,12 +5,11 @@ import java.awt.*;
 
 public class ElementTile extends JComponent {
     private Image image;
-    private int size = 50;
-    public static int tileSize = 50;
+    public static int tileSize = 100;
 
     public ElementTile(Image image){
         this.image = image;
-        this.setPreferredSize(new Dimension(size, size));
+        this.setPreferredSize(new Dimension(tileSize, tileSize));
     }
 
     public void changeImage(Image image){

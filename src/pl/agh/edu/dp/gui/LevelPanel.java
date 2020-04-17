@@ -57,10 +57,11 @@ public class LevelPanel extends JPanel {
     private void executeOneTurn() throws IOException {
         if(lastMove != null) {
             maze.currentRoom.getSide(lastMove).enter();
+            updateTiles();
         } else if(oneMove != null) {
             maze.currentRoom.getSide(oneMove).enter();
+            updateTiles();
         }
-        updateTiles();
         oneMove = null;
     }
 

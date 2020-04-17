@@ -1,5 +1,7 @@
 package pl.agh.edu.dp.labirynth;
 
+import pl.agh.edu.dp.labirynth.maze_elements.Room;
+
 import java.util.Optional;
 import java.util.Vector;
 

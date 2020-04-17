@@ -1,4 +1,4 @@
-package pl.agh.edu.dp.labirynth;
+package pl.agh.edu.dp.labirynth.maze_elements;
 
 import pl.agh.edu.dp.gui.ElementImage;
 

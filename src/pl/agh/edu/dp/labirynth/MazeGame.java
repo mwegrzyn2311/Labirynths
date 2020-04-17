@@ -1,6 +1,10 @@
 package pl.agh.edu.dp.labirynth;
 
 import pl.agh.edu.dp.labirynth.builder.MazeBuilder;
+import pl.agh.edu.dp.labirynth.maze_elements.Door;
+import pl.agh.edu.dp.labirynth.maze_elements.Room;
+import pl.agh.edu.dp.labirynth.maze_elements.Wall;
+import pl.agh.edu.dp.labirynth.utils.Direction;
 
 public class MazeGame {
     public static Maze createMaze(){

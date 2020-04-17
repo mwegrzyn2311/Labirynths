@@ -1,6 +1,11 @@
 package pl.agh.edu.dp.labirynth.builder;
 
 import pl.agh.edu.dp.labirynth.*;
+import pl.agh.edu.dp.labirynth.factory.MazeFactory;
+import pl.agh.edu.dp.labirynth.utils.Direction;
+import pl.agh.edu.dp.labirynth.maze_elements.Door;
+import pl.agh.edu.dp.labirynth.maze_elements.Room;
+import pl.agh.edu.dp.labirynth.maze_elements.Wall;
 
 public class StandardBuilderMaze extends MazeBuilder {
     private Maze maze = new Maze();

@@ -1,6 +1,6 @@
 package pl.agh.edu.dp.gui;
 
-import pl.agh.edu.dp.labirynth.Direction;
+import pl.agh.edu.dp.labirynth.utils.Direction;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;

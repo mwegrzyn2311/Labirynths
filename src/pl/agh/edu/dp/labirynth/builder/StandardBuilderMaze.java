@@ -1,9 +1,9 @@
 package pl.agh.edu.dp.labirynth.builder;
 
-import pl.agh.edu.dp.labirynth.Direction;
-import pl.agh.edu.dp.labirynth.Door;
-import pl.agh.edu.dp.labirynth.Room;
-import pl.agh.edu.dp.labirynth.Wall;
+import pl.agh.edu.dp.labirynth.utils.Direction;
+import pl.agh.edu.dp.labirynth.maze_elements.Door;
+import pl.agh.edu.dp.labirynth.maze_elements.Room;
+import pl.agh.edu.dp.labirynth.maze_elements.Wall;
 
 public class StandardBuilderMaze extends MazeBuilder {
     @Override

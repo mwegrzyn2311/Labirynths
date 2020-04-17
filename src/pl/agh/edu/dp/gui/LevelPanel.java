@@ -2,20 +2,16 @@ package pl.agh.edu.dp.gui;
 
 import pl.agh.edu.dp.labirynth.*;
 import pl.agh.edu.dp.labirynth.builder.StandardBuilderMaze;
+import pl.agh.edu.dp.labirynth.utils.Direction;
 import pl.agh.edu.dp.utils.Vector2d;
 
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import static java.awt.event.KeyEvent.*;
 
 public class LevelPanel extends JPanel {
     private Maze maze;

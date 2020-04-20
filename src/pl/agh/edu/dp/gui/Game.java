@@ -4,10 +4,9 @@ import pl.agh.edu.dp.labirynth.builder.MazeBuilder;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.IOException;
 
 public class Game extends JFrame {
-    MazeBuilder builder;
+    private MazeBuilder builder;
 
     public Game(MazeBuilder builder) {
         super("Labirynth");

@@ -1,8 +1,5 @@
 package pl.agh.edu.dp.gui;
 
-import pl.agh.edu.dp.gui.Game;
-import pl.agh.edu.dp.gui.LevelPanel;
-
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;

@@ -1,11 +1,9 @@
 package pl.agh.edu.dp.labirynth;
 
-import com.sun.source.util.SourcePositions;
 import pl.agh.edu.dp.labirynth.builder.MazeBuilder;
 import pl.agh.edu.dp.labirynth.utils.Direction;
 
 import java.awt.image.BufferedImage;
-import java.sql.SQLOutput;
 
 public class MazeGame {
 

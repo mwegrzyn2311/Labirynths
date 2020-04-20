@@ -8,9 +8,7 @@ public class Vector2d {
         this.y=y;
     }
     public String toString(){
-        String res="(";
-        res=res+Integer.toString(x)+","+Integer.toString(y)+")";
-        return res;
+        return "("+ x +","+ y +")";
     }
     public boolean precedes(Vector2d other){
         return(this.x <= other.x &&  this.y <= other.y );

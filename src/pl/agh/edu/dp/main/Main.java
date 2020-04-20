@@ -1,6 +1,5 @@
 package pl.agh.edu.dp.main;
 
-import com.sun.security.jgss.GSSUtil;
 import pl.agh.edu.dp.gui.Game;
 import pl.agh.edu.dp.labirynth.MazeGame;
 import pl.agh.edu.dp.labirynth.builder.MazeBuilder;
@@ -17,15 +16,7 @@ import java.io.IOException;
 public class Main {
 
     public static void main(String[] args) throws IOException {
-
-        MazeBuilder builder = new StandardBuilderMaze(MazeFactory.getInstance());
-        /*builder.clear();
-        builder.buildRoom(1);
-        builder.buildRoom(2);
-        builder.buildDoor(1, 2);*/
-        BufferedImage image = ImageIO.read(Main.class.getResource("/resources/levels/level1.png"));
-        MazeGame.fillBuilderFromBufferedImage(builder, image);
-
+        /* Section responsible for checking if Factories are singletons */
         if(BombedMazeFactory.getInstance() == BombedMazeFactory.getInstance()) {
             System.out.println("Bombed maze factory is singleton");
         } else {
@@ -42,9 +33,14 @@ public class Main {
             System.out.println("Classic maze factory is not singleton");
         }
 
+        /* Section responsible for starting a game from given source */
+        MazeBuilder builder = new StandardBuilderMaze(MazeFactory.getInstance());
+        BufferedImage image = ImageIO.read(Main.class.getResource("/resources/levels/level1.png"));
+        MazeGame.fillBuilderFromBufferedImage(builder, image);
+
         SwingUtilities.invokeLater(() -> {
             try {
-                Game game = new Game(builder);
+                new Game(builder);
             } catch (Exception e) {
                 e.printStackTrace();
             }

@@ -7,8 +7,6 @@ import pl.agh.edu.dp.labirynth.maze_elements.Door;
 import pl.agh.edu.dp.labirynth.maze_elements.Room;
 import pl.agh.edu.dp.labirynth.maze_elements.Wall;
 
-import java.util.Optional;
-
 public class StandardBuilderMaze extends MazeBuilder {
     private Maze maze = new Maze();
     private MazeFactory factory;

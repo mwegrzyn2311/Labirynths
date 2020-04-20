@@ -1,6 +1,5 @@
 package pl.agh.edu.dp.labirynth.maze_elements.bombed;
 
-import pl.agh.edu.dp.gui.LevelPanel;
 import pl.agh.edu.dp.labirynth.Maze;
 import pl.agh.edu.dp.labirynth.Player;
 import pl.agh.edu.dp.labirynth.maze_elements.Room;

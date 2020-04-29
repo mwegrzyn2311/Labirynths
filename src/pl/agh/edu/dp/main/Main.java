@@ -34,7 +34,7 @@ public class Main {
         }
 
         /* Section responsible for starting a game from given source */
-        MazeBuilder builder = new StandardBuilderMaze(MazeFactory.getInstance());
+        MazeBuilder builder = new StandardBuilderMaze(BombedMazeFactory.getInstance());
         BufferedImage image = ImageIO.read(Main.class.getResource("/resources/levels/Level1.png"));
         MazeGame.fillBuilderFromBufferedImage(builder, image);
 

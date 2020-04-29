@@ -3,7 +3,7 @@ package pl.agh.edu.dp.labirynth.builder;
 import pl.agh.edu.dp.labirynth.utils.Direction;
 import pl.agh.edu.dp.labirynth.Maze;
 
-public class CountingMazeBuilder extends MazeBuilder {
+public class CountingMazeBuilder implements MazeBuilder {
     private int roomsCount;
     private int doorsCount;
     private int wallsCount;
@@ -47,5 +47,9 @@ public class CountingMazeBuilder extends MazeBuilder {
 
     public int getWallsCount() {
         return wallsCount;
+    }
+
+    public int getCounts() {
+        return roomsCount + doorsCount + wallsCount;
     }
 }

@@ -7,8 +7,8 @@ import pl.agh.edu.dp.labirynth.maze_elements.Room;
 public class BombedRoom extends Room {
     static final int timeToDetonate = 10* 300;
     int timer = 0;
-    public BombedRoom(int number, Maze maze) {
-        super(number, maze);
+    public BombedRoom(int number) {
+        super(number);
     }
 
     @Override

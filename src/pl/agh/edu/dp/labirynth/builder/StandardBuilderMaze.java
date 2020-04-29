@@ -7,11 +7,21 @@ import pl.agh.edu.dp.labirynth.maze_elements.Door;
 import pl.agh.edu.dp.labirynth.maze_elements.Room;
 import pl.agh.edu.dp.labirynth.maze_elements.Wall;
 
-public class StandardBuilderMaze extends MazeBuilder {
+public class StandardBuilderMaze implements MazeBuilder {
     private Maze maze = new Maze();
-    private MazeFactory factory;
+    private MazeFactory factory = MazeFactory.getInstance();
+
+    public StandardBuilderMaze() {};
 
     public StandardBuilderMaze(MazeFactory factory) {
+        this.factory = factory;
+    }
+
+    public MazeFactory getFactory() {
+        return factory;
+    }
+
+    public void setFactory(MazeFactory factory) {
         this.factory = factory;
     }
 
@@ -20,7 +30,7 @@ public class StandardBuilderMaze extends MazeBuilder {
         if(!maze.getRoom(index).isEmpty()) {
             throw new IllegalArgumentException("Trying to build room on occupied place");
         }
-        Room room = factory.makeRoom(index, maze);
+        Room room = factory.makeRoom(index);
         for (Direction dir: Direction.values()) {
             room.setSide(dir, factory.makeWall());
         }
@@ -62,7 +72,7 @@ public class StandardBuilderMaze extends MazeBuilder {
     private Direction commonWall(Room from, Room to)
     {
         for(Direction dir : Direction.values()) {
-            if(from.getSide(dir) instanceof Wall && to.getSide(dir.opposite()) instanceof Wall) {
+            if(canConnectRoomsInDir(from, to, dir)) {
                 return dir;
             }
         }

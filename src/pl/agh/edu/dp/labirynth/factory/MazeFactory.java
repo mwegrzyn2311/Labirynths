@@ -17,8 +17,8 @@ public class MazeFactory {
         return instance;
     }
 
-    public Room makeRoom(int index, Maze maze) {
-        return new Room(index, maze);
+    public Room makeRoom(int index) {
+        return new Room(index);
     }
 
     public Wall makeWall() {

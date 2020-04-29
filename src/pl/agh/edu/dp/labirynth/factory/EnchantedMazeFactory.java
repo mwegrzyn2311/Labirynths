@@ -21,8 +21,8 @@ public class EnchantedMazeFactory extends MazeFactory {
     }
 
     @Override
-    public Room makeRoom(int index, Maze maze) {
-        return new EnchantedRoom(index, maze);
+    public Room makeRoom(int index) {
+        return new EnchantedRoom(index);
     }
 
     @Override

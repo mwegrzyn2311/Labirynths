@@ -35,7 +35,7 @@ public class Main {
 
         /* Section responsible for starting a game from given source */
         MazeBuilder builder = new StandardBuilderMaze(MazeFactory.getInstance());
-        BufferedImage image = ImageIO.read(Main.class.getResource("/resources/levels/level1.png"));
+        BufferedImage image = ImageIO.read(Main.class.getResource("/resources/levels/Level1.png"));
         MazeGame.fillBuilderFromBufferedImage(builder, image);
 
         SwingUtilities.invokeLater(() -> {

@@ -24,7 +24,7 @@ public class BombedMazeFactory extends MazeFactory {
     }
 
     @Override
-    public Room makeRoom(int index, Maze maze) {
-        return new BombedRoom(index, maze);
+    public Room makeRoom(int index) {
+        return new BombedRoom(index);
     }
 }
